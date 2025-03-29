@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Redesign Progress Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .progress-container { width: 100%; background: #eee; border-radius: 25px; margin: 20px 0; }
+    .progress-bar { width: 0%; height: 30px; background: #4caf50; border-radius: 25px; text-align: center; color: white; }
+    .task { margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>Website Redesign Progress Tracker</h1>
+  
+  <div id="taskList">
+    <div class="task">
+      <input type="checkbox" class="task-checkbox" onchange="updateProgress()"> Home Page
+    </div>
+    <div class="task">
+      <input type="checkbox" class="task-checkbox" onchange="updateProgress()"> About Us Page
+    </div>
+    <div class="task">
+      <input type="checkbox" class="task-checkbox" onchange="updateProgress()"> Services Page
+    </div>
+    <div class="task">
+      <input type="checkbox" class="task-checkbox" onchange="updateProgress()"> Contact Page
+    </div>
+    <!-- Add additional pages as needed -->
+  </div>
+  
+  <h2>Progress</h2>
+  <div class="progress-container">
+    <div id="progressBar" class="progress-bar">0%</div>
+  </div>
+
+  <script>
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.task-checkbox');
+      const total = checkboxes.length;
+      let completed = 0;
+      checkboxes.forEach(chk => { if (chk.checked) completed++; });
+      let percent = Math.round((completed / total) * 100);
+      document.getElementById('progressBar').style.width = percent + '%';
+      document.getElementById('progressBar').textContent = percent + '%';
+    }
+  </script>
+</body>
+</html>
